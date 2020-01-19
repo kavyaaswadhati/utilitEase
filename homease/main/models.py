@@ -21,6 +21,8 @@ class Bill(model.Model):
     total = models.IntegerField()
     utilityusername = models.CharField(max_length=50)
     utilitypassword = models.CharField(max_length=50)
+    date = models.DateField()
+
 
 class Payment(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -28,9 +30,10 @@ class Payment(models.Model):
     bill = models.ForeignKey(Bill, on_delete=models.CASCADE)
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=2)
+    date = models.DateField()
 
 class Records(models.Model):
     user1 = models.ForeignKey(User, on_delete=models.CASCADE)
     user2 = models.ForeignKey(User, on_delete=models.CASCADE)
     total = models.DecimalField(max_digits=20, decimal_places=2)
-
+    lastupdate = models.DateField()
